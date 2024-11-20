@@ -43,8 +43,9 @@ public boolean deleteNewsArticle(String id){
 public boolean publishNewsArticle(String id){
         for (NewsArticle n: newsArticleArray){
             if(n.getId().equals(id)){
+                if(!n.isPublished())
+                    n.setPublishDate(LocalDate.now());
                 n.setPublished(true);
-                n.setPublishDate(LocalDate.now());
                 return true;
             }
         }
